@@ -10,8 +10,9 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      React goit-react-hw-02- FeedBack
+      React FeedBack
       Hello Olena
+
     </div>
   );
 };
