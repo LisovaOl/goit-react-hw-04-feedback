@@ -11,6 +11,7 @@ export const App = () => {
       }}
     >
       React goit-react-hw-02- FeedBack
+      Hello Olena
     </div>
   );
 };
