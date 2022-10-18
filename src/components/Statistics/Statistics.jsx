@@ -1,33 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
+import { StatList, StatItem } from './Statistics.styled';
 
-class StatData extends React.Component {
+
+class StatData extends Component {
   static defaultProps = {
-    initialValue: 0,
+    good: 0,
+    neutral: 0,
+    bad: 0,
+    total: 0,
+    positive: 0,
+    
   };
   static propTypes = {
-    initialValue: PropTypes.number.isRequired,
-  };
-  // сучасний короткий запис babel трансформирует
-
-  state = { value: this.props.initialValue };
-  handleIncrement = () => {
-    this.setState(prevState => {
-      // prevState актуальное состояние на текущий момент
-      return {
-        value: prevState.value + 1,
-      };
-    });
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positive: PropTypes.number.isRequired,
   };
   render() {
-    const { value } = this.state;
     return (
-      <div>
-        <FeedbackOptions onIncrement={this.handleIncrement} />
-        <span>{value}</span>
-      </div>
+      <>
+        <StatList>
+          <StatItem>Good: {this.props.good}</StatItem>
+          <StatItem>Neutral: {this.props.neutral}</StatItem>
+          <StatItem> Bad: {this.props.bad}</StatItem>
+          <StatItem> Total: {this.props.total}</StatItem>
+          <StatItem> Positive: {this.props.positive}</StatItem>
+        </StatList>
+      </>
     );
   }
 }
+
 export default StatData;
