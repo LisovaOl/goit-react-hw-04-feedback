@@ -8,6 +8,5 @@ export const SectionContainer = styled.div`
 `;
 export const Title = styled.h1`
   margin-top: 50px;
-  /* text-transform: uppercase; */
   font-weight: bold;
 `;

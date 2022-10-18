@@ -1,15 +1,11 @@
-import { React, Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
 import Section from './SectionTitle/SectionTitle';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import StatData from './Statistics/Statistics';
-import {Notification} from './Notification/Notification';
+import { Notification } from './Notification/Notification';
 
 class App extends Component {
-  static propTypes = {
-    initialValue: PropTypes.number.isRequired,
-  };
-
   state = {
     good: 0,
     neutral: 0,
@@ -23,22 +19,21 @@ class App extends Component {
     }));
   };
 
-  onTotalCount = () => {
-    const values = Object.values(this.state);
-    return values.reduce((acc, value) => {
-      return acc + value;
-    });
+  onCountTotal = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
   };
 
   onPositiveFeedback = () => {
     const positive = this.state.good;
-    return Math.round((positive * 100) / this.onTotalCount());
+    return Math.round(
+      (positive * 100) / (this.onCountTotal() - this.state.neutral)
+    );
   };
 
   render() {
     const buttonNames = Object.keys(this.state);
     return (
-      <div>
+      <>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={buttonNames}
@@ -51,14 +46,14 @@ class App extends Component {
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
-              total={this.onTotalCount()}
+              total={this.onCountTotal()}
               positive={this.onPositiveFeedback()}
             />
           </Section>
         ) : (
           <Notification message="There is no feedback" />
         )}
-      </div>
+      </>
     );
   }
 }
