@@ -21,13 +21,14 @@ class StatData extends Component {
   };
 
   render() {
-    
+
     return (
       <>
         <StatList>
           <StatItem> Good: {this.props.good}</StatItem>
           <StatItem> Neutral: {this.props.neutral}</StatItem>
           <StatItem> Bad: {this.props.bad}</StatItem>
+          <hr/>
           <StatItem> Total: {this.props.total}</StatItem>
           <StatItem> Positive: {this.props.positive} %</StatItem>
         </StatList>
