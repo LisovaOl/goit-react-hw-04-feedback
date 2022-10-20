@@ -26,7 +26,7 @@ class App extends Component {
   onPositiveFeedback = () => {
     const positive = this.state.good;
     return Math.round(
-      (positive * 100) / (this.onCountTotal() - this.state.neutral)
+      (positive * 100) / (this.onCountTotal())
     );
   };
 
