@@ -5,7 +5,7 @@ import { Button } from './FeedbackOptions.styled';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <>
-      {options.map(option => (
+      {Object.keys(options).map(option => (
         <Button
           key={option}
           value={option}
@@ -18,7 +18,12 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     </>
   );
 };
+
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  options: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+  }),
   onLeaveFeedback: PropTypes.func.isRequired,
 };
