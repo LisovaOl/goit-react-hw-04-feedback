@@ -10,6 +10,8 @@ export default function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+  const options = Object.keys({ good, neutral, bad })
+
   const onLeaveFeedback = event => {
     const currentButton = event.currentTarget.value;
     switch (currentButton) {
@@ -43,7 +45,7 @@ export default function App() {
     <>
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={{ good, neutral, bad }}
+          options={options}
           onLeaveFeedback={onLeaveFeedback}
         />
       </Section>
